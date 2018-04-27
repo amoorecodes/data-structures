@@ -31,9 +31,10 @@ var LinkedList = function() {
       if(starter.value === target) {
         return true;
       }
+      debugger;
       starter = starter.next;
     }
-    
+
     return false;
   };
 
