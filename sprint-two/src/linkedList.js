@@ -31,7 +31,7 @@ var LinkedList = function() {
       if(starter.value === target) {
         return true;
       }
-      debugger;
+      // debugger;
       starter = starter.next;
     }
 
