@@ -1,3 +1,4 @@
+// O(1)
 var Tree = function(value) {
   var newTree = Object.create(treeMethods);
   
@@ -10,10 +11,12 @@ var Tree = function(value) {
 
 var treeMethods = {};
 
+// O(1)
 treeMethods.addChild = function(value) {
   this.children.push(Tree(value));
 };
 
+// O(n log(n))
 treeMethods.contains = function(target) {
   if (target === this.value) {
     return true;
@@ -29,9 +32,3 @@ treeMethods.contains = function(target) {
   };
   return false;
 }
-
-
-
-/*
- * Complexity: What is the time complexity of the above functions?
- */
