@@ -16,7 +16,7 @@ Graph.prototype.contains = function(node) {
   if (this.storage[node]) {
     return true;
   } else {
-    debugger;
+//     debugger;
     return false;
   }
 };
