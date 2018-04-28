@@ -1,39 +1,73 @@
 
 
-// Instantiate a new graph
+// O(1)
 var Graph = function() {
+  this.storage = {};
+
 };
 
-// Add a node to the graph, passing in the node's value.
+// O(1)
 Graph.prototype.addNode = function(node) {
+  this.storage[node] = {};
 };
 
-// Return a boolean value indicating if the value passed to contains is represented in the graph.
+// O(1)
 Graph.prototype.contains = function(node) {
+  if (this.storage[node]) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
-// Removes a node from the graph.
+// O(1)
 Graph.prototype.removeNode = function(node) {
+
+  if (this.storage[node] !== undefined) {
+    for (var key in this.storage[node]) {
+      delete this.storage[key][node];
+    }
+  }
+  delete this.storage[node];
 };
 
-// Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
+// O(1)
 Graph.prototype.hasEdge = function(fromNode, toNode) {
+
+  if (this.storage[fromNode][toNode]) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
-// Connects two nodes in a graph by adding an edge between them.
+// O(1)
 Graph.prototype.addEdge = function(fromNode, toNode) {
+
+  if (this.storage[fromNode] && this.storage[toNode]) {
+    this.storage[fromNode][toNode] = true;
+  }
+  if (this.storage[fromNode] && this.storage[toNode]) {
+    this.storage[toNode][fromNode] = true;
+  }
 };
 
-// Remove an edge between any two specified (by value) nodes.
+// O(1).
 Graph.prototype.removeEdge = function(fromNode, toNode) {
+  if (this.storage[fromNode] && this.storage[toNode]) {
+    this.storage[fromNode][toNode] = false;
+  }
+  if (this.storage[fromNode] && this.storage[toNode]) {
+    this.storage[toNode][fromNode] = false;
+  }
 };
 
-// Pass in a callback which will be executed on each node of the graph.
+// O(n)
 Graph.prototype.forEachNode = function(cb) {
-};
 
-/*
- * Complexity: What is the time complexity of the above functions?
- */
+  for (var key in this.storage) {
+    cb(key);
+  }
+};
 
 
