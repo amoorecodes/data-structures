@@ -12,17 +12,16 @@
 //   limitedArray.get(3); // returns 'hi'
 
 var LimitedArray = function(limit) {
-  var storage = {};
+  var storage = [];
 
   var limitedArray = {};
-  limitedArray.get = function(index, k) {
+  limitedArray.get = function(index) {
     checkLimit(index);
-    return storage[index][k];
+    return storage[index];
   };
-  limitedArray.set = function(index, k, value) {
+  limitedArray.set = function(index, value) {
     checkLimit(index);
-    storage[index] = storage[index] || {};
-    storage[index][k] = value;
+    storage[index] = value;
   };
   limitedArray.each = function(callback) {
     for (var i = 0; i < storage.length; i++) {
